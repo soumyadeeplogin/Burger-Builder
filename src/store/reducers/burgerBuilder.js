@@ -14,39 +14,58 @@ const INGREDIENT_PRICES = {
     bacon: 0.7
 }
 
-const reducer = (state = initialState, action) => {
-    switch (action.type)
-    {
-        case actionTypes.ADD_INGREDIENT:
-            const updatedIndgredient = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 }
+const addIngredient = (state, action) => {
+    const updatedIndgredient = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 }
             const updatedIndgredients = updateObject(state.ingredients,updatedIndgredient)
             const updatedState = {
                 ingredients: updatedIndgredients,
                 totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
             }
             return updateObject(state, updatedState)
-                
-        case actionTypes.REMOVE_INGREDIENT:
-            const updatedIng = { [action.ingredientName]: state.ingredients[action.ingredientName] - 1 }
+}
+
+const removeIngredient = (state, action) => {
+    const updatedIng = { [action.ingredientName]: state.ingredients[action.ingredientName] - 1 }
             const updatedIndgs = updateObject(state.ingredients,updatedIng)
             const updatedSt = {
                 ingredients: updatedIndgs,
                 totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
             }
         return updateObject(state, updatedSt)
+}
+
+const setIngredient = (state, action) => {
+    return updateObject(state, {
+        ingredients: {
+            salad: action.ingredients.salad,
+            bacon: action.ingredients.bacon,
+            cheese: action.ingredients.cheese,
+            meat: action.ingredients.meat
+        },
+        totalPrice: 4,
+        error: false
+    })
+}
+
+const fetchIngredientFailed = (state, action) => {
+    updateObject(state, {error: true})
+}
+
+const reducer = (state = initialState, action) => {
+    switch (action.type)
+    {
+        case actionTypes.ADD_INGREDIENT:
+            return addIngredient(state, action)
+
+        case actionTypes.REMOVE_INGREDIENT:
+            return removeIngredient(state, action)
+
         case actionTypes.SET_INGREDIENTS:
-            return updateObject(state, {
-                ingredients: {
-                    salad: action.ingredients.salad,
-                    bacon: action.ingredients.bacon,
-                    cheese: action.ingredients.cheese,
-                    meat: action.ingredients.meat
-                },
-                totalPrice: 4,
-                error: false
-            })
+            return setIngredient(state,action)
+
         case actionTypes.FETCH_INGREDIENTS_FAILED:
-            return updateObject(state, {error: true})
+            return fetchIngredientFailed(state,action)
+            
         default:
             return state
     }
