@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import Order from '../../components/Order/Order';
-import axios from '../../axios-orders/axios-orders';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import Order from '../../components/Order/Order'
+import axios from '../../axios-orders/axios-orders'
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 import * as actions from '../../store/actions/index'
 
 import {connect} from 'react-redux'

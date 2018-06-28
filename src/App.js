@@ -16,8 +16,8 @@ class App extends Component {
           </Switch>
         </Layout>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

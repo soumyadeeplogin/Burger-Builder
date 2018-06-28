@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import Logo from '../../Logo/Logo';
-import NavigationItems from '../NavigationItems/NavigationItems';
-import classes from './SideDrawer.css';
-import Backdrop from '../../UI/Backdrop/Backdrop';
-import Aux from '../../../hoc/Auxuliary/Auxiliary';
+import Logo from '../../Logo/Logo'
+import NavigationItems from '../NavigationItems/NavigationItems'
+import classes from './SideDrawer.css'
+import Backdrop from '../../UI/Backdrop/Backdrop'
+import Aux from '../../../hoc/Auxuliary/Auxiliary'
 
 const sideDrawer = ( props ) => {
-    let attachedClasses = [classes.SideDrawer, classes.Close];
+    let attachedClasses = [classes.SideDrawer, classes.Close]
     if (props.open) {
-        attachedClasses = [classes.SideDrawer, classes.Open];
+        attachedClasses = [classes.SideDrawer, classes.Open]
     }
     return (
         <Aux>
@@ -23,7 +23,7 @@ const sideDrawer = ( props ) => {
                 </nav>
             </div>
         </Aux>
-    );
-};
+    )
+}
 
-export default sideDrawer;
+export default sideDrawer
