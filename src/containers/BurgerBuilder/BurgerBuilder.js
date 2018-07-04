@@ -22,7 +22,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount () {
-        console.log(this.props)
+
         this.props.onInitIngredients()
     }
 
@@ -42,7 +42,7 @@ class BurgerBuilder extends Component {
         {
             this.setState( { purchasing: true } )
         } else {
-            console.log("onSetAuthRedirectPath")
+
             this.props.onSetAuthRedirectPath('/checkout')
             this.props.history.push('/auth')
         }
